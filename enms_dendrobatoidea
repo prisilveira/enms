@@ -1,1 +1,29 @@
-# Code used for estimating range size of species
+# FUnction with the parameters used to models species distribution
+#install.packages("ENMTML")
+library(ENMTML)
+
+ENMTML(
+  pred_dir="vars/",
+  proj_dir=NULL,
+  occ_file="spp.txt",
+  sp="sp",
+  x="x",
+  y="y",
+  min_occ=6,
+  thin_occ=c(method='CELLSIZE'),
+  eval_occ=NULL,
+  colin_var=c(method='PCA'),
+  imp_var=FALSE,
+  sp_accessible_area=c(method='MASK', filepath="Ecoregions/ecoregions_SA.shp"),
+  pseudoabs_method=c(method="ENV_CONST"),
+  pres_abs_ratio=1,
+  part=c(method='BOOT', replicates='10', proportion='0.7'),
+  save_part=FALSE,
+  save_final=TRUE,
+  algorithm=c(method="MXS","SVM","RDF"),
+  thr=c(type='JACCARD'),
+  msdm=c(method='OBR'),
+  ensemble=c(method='W_MEAN', metric='Jaccard'),
+  extrapolation=FALSE,
+  cores=4
+)
